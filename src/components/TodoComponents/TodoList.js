@@ -9,7 +9,11 @@ class TodoList extends React.Component {
     return (
       <>
         {this.props.todoArray.map(item => (
-          <Todo key={item.id} item={item} />
+          <Todo
+            key={item.id}
+            item={item}
+            onClick={event => this.props.markCompleted(event, item.id)}
+          />
         ))}
       </>
     );

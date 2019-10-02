@@ -26,12 +26,44 @@ class App extends React.Component {
     });
   };
 
+  markCompleted = (event, taskID) => {
+    event.preventDefault();
+
+    this.setState({
+      todo: this.state.todo.map(task => {
+        if (task.id === taskID) {
+          return {
+            ...task, // merge existing task
+            completed: !task.completed // set completed to opposite value
+          };
+        } else {
+          return task;
+        }
+      })
+    });
+  };
+
+  clearCompleted = event => {
+    event.preventDefault();
+
+    this.setState({
+      // filter out completed tasks
+      todo: this.state.todo.filter(task => {
+        return !task.completed;
+      })
+    });
+  };
+
   render() {
     return (
       <div>
         <h1>To Do:</h1>
-        <TodoForm addTodo={this.addTodo} />
-        <TodoList todoArray={this.state.todo} />
+        <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted} />
+        <TodoList
+          todoArray={this.state.todo}
+          markCompleted={this.markCompleted}
+        />
+        {console.log(this.state.todo)}
       </div>
     );
   }
