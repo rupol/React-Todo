@@ -1,5 +1,5 @@
 import React from "react";
-// import TodoForm from "./components/TodoComponents/TodoForm";
+import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from "./components/TodoComponents/TodoList";
 
 class App extends React.Component {
@@ -14,7 +14,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>To Do:</h1>
-        {/* <TodoForm /> */}
+        <TodoForm />
         <TodoList />
       </div>
     );
