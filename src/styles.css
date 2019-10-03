@@ -134,6 +134,29 @@ table {
     border-spacing : 0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
 .task.completed {
     text-decoration: line-through;
+}
+
+html {
+    background             : url("./img/desk.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size   : cover;
+    -o-background-size     : cover;
+    background-size        : cover;
+    font-family            : 'Mansalva', cursive;
+    text-align             : center;
+}
+
+h1 {
+    font-size: 7rem;
+    margin   : 2rem 5%;
 }
