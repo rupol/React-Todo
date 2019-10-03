@@ -47,6 +47,16 @@ const ClearButton = styled.button`
   background-color: #ce6d5d;
 `;
 
+const Icon = styled.i`
+  margin: 15px 0 0;
+`;
+
+const ButtonLabel = styled.p`
+  font-size: 1.5rem;
+  font-family: "Mansalva", cursive;
+  margin: 5px 0;
+`;
+
 class TodoForm extends React.Component {
   constructor() {
     super();
@@ -66,6 +76,9 @@ class TodoForm extends React.Component {
 
     this.props.addTodo(event, this.state.value);
 
+    window.localStorage.setItem("tasks", JSON.stringify(this.props.todoArray));
+    console.log(localStorage.tasks);
+
     this.setState({
       value: ""
     });
@@ -81,10 +94,12 @@ class TodoForm extends React.Component {
           onChange={this.handleChange}
         />
         <AddButton onClick={this.handleSubmit}>
-          <i class="far fa-plus-square fa-lg"></i>
+          <Icon className="far fa-plus-square fa-lg"></Icon>
+          <ButtonLabel>add</ButtonLabel>
         </AddButton>
         <ClearButton onClick={this.props.clearCompleted}>
-          <i class="far fa-minus-square fa-lg"></i>
+          <Icon className="far fa-minus-square fa-lg"></Icon>
+          <ButtonLabel>clear</ButtonLabel>
         </ClearButton>
       </Form>
     );

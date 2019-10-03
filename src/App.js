@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todo: []
+      todo: JSON.parse(window.localStorage.getItem("tasks"))
     };
   }
   // design `App` to be the parent component of your application.
@@ -52,13 +52,19 @@ class App extends React.Component {
         return !task.completed;
       })
     });
+
+    window.localStorage.setItem("tasks", JSON.stringify(this.state.todo));
   };
 
   render() {
     return (
       <div>
         <h1>To Do:</h1>
-        <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted} />
+        <TodoForm
+          todoArray={this.state.todo}
+          addTodo={this.addTodo}
+          clearCompleted={this.clearCompleted}
+        />
         <TodoList
           todoArray={this.state.todo}
           markCompleted={this.markCompleted}

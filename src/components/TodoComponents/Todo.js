@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const TaskCard = styled.form`
+const TaskCard = styled.div`
   width: 300px;
   height: 300px;
   background-color: #f37b85;
