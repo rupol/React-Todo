@@ -77,7 +77,6 @@ class TodoForm extends React.Component {
     this.props.addTodo(event, this.state.value);
 
     window.localStorage.setItem("tasks", JSON.stringify(this.props.todoArray));
-    console.log(localStorage.tasks);
 
     this.setState({
       value: ""

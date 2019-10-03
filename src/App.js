@@ -4,11 +4,19 @@ import TodoList from "./components/TodoComponents/TodoList";
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
+
   constructor() {
     super();
-    this.state = {
-      todo: JSON.parse(window.localStorage.getItem("tasks"))
-    };
+    let storedTasks = JSON.parse(window.localStorage.getItem("tasks"));
+    if (storedTasks) {
+      this.state = {
+        todo: storedTasks
+      };
+    } else {
+      this.state = {
+        todo: []
+      };
+    }
   }
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
@@ -24,6 +32,8 @@ class App extends React.Component {
     this.setState({
       todo: [...this.state.todo, newTodo]
     });
+
+    window.localStorage.setItem("tasks", JSON.stringify(this.state.todo));
   };
 
   markCompleted = (event, taskID) => {
